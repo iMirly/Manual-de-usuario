@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMirly - Servicios locales, soluciones reales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --primary-dark: #5B4BC4;
+            --bg: #F8F9FA;
+            --white: #FFFFFF;
+            --text: #2D3436;
+            --text-light: #636E72;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        .logo-icon i { font-size: 24px; }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            animation: bgMove 20s linear infinite;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        }
+
+        .hero-cta i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ========== SCREENS SECTION ========== */
+        .screens-section {
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 80px 24px 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Screen wrapper - SIN overflow:hidden para que no corte */
+        .screen-wrapper {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            background: var(--white);
+        }
+
+        .screen-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .screen-wrapper iframe {
+            display: block;
+            width: 100%;
+            border: none;
+            border-radius: 24px;
+            height: 800px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="ph ph-aperture"></i></div>
+                <span class="logo-text">Mirly</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="ph ph-sparkle"></i> La app de servicios locales</div>
+            <h1>Servicios locales,<br>soluciones reales</h1>
+            <p>Conecta con profesionales cualificados en tu zona. Desde belleza y hogar hasta educación y eventos. Todo en una sola app.</p>
+            <button class="hero-cta" onclick="document.getElementById('screens').scrollIntoView({behavior:'smooth'})">
+                Descubre cómo funciona
+                <i class="ph ph-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section class="screens-section" id="screens">
+        <div class="section-title">
+            <h2>Así funciona iMirly</h2>
+            <p>Un recorrido por todas las pantallas de la aplicación</p>
+        </div>
+
+        <!-- 1.html: Splash con texto a la izquierda - altura 750 -->
+        <div class="screen-wrapper" data-screen="1">
+            <iframe src="1.html" width="100%" height="750" scrolling="no"></iframe>
+        </div>
+
+        <!-- 2.html: 3 Onboarding con título debajo - altura 900 -->
+        <div class="screen-wrapper" data-screen="2">
+            <iframe src="2.html" width="100%" height="900" scrolling="no"></iframe>
+        </div>
+
+        <!-- 3.html: Login + Registro con título debajo - altura 850 -->
+        <div class="screen-wrapper" data-screen="3">
+            <iframe src="3.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+
+                <!-- 4.html: Login + Registro con título debajo - altura 850 -->
+        <div class="screen-wrapper" data-screen="3">
+            <iframe src="4.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="5.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="6.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="7.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="8.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="9.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="10.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+                </div>
+                <div class="screen-wrapper" data-screen="3">
+            <iframe src="11.html" width="100%" height="850" scrolling="no"></iframe>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 iMirly. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.screen-wrapper').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
