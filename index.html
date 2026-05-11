@@ -6,7 +6,7 @@
     <title>iMirly - Servicios locales, soluciones reales</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,11 +15,15 @@
             --primary: #6C5CE7;
             --primary-light: #A29BFE;
             --primary-dark: #5B4BC4;
-            --bg: #F8F9FA;
+            --bg: #d1cff8;
             --white: #FFFFFF;
             --text: #2D3436;
             --text-light: #636E72;
+            --bubble-bg: #2D3436;
+            --bubble-text: #FFFFFF;
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -28,69 +32,115 @@
             overflow-x: hidden;
         }
 
-        /* ========== HEADER ========== */
-        .header {
-            background: var(--white);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        /* ========== MENU STICKY ========== */
+        .main-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        .header-inner {
-            max-width: 1200px;
+        .main-nav.scrolled {
+            box-shadow: 0 4px 30px rgba(108, 92, 231, 0.1);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            height: 64px;
         }
 
-        .logo {
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 44px;
-            height: 44px;
+        .nav-logo-icon {
+            width: 36px; height: 36px;
             background: var(--primary);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+            font-size: 18px;
+            box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
         }
 
-        .logo-icon i { font-size: 24px; }
-
-        .logo-text {
-            font-size: 28px;
+        .nav-logo-text {
+            font-size: 22px;
             font-weight: 800;
             color: var(--primary);
             letter-spacing: -0.5px;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        .nav-links a i { font-size: 14px; }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
         /* ========== HERO ========== */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 80px 24px;
+            padding: 140px 24px 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
             background-size: 30px 30px;
             opacity: 0.3;
@@ -106,7 +156,6 @@
             position: relative;
             z-index: 2;
             max-width: 700px;
-            margin: 0 auto;
         }
 
         .hero-badge {
@@ -125,12 +174,12 @@
         }
 
         .hero h1 {
-            font-size: clamp(32px, 5vw, 52px);
-            font-weight: 800;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
             color: white;
-            line-height: 1.15;
+            line-height: 1.1;
             margin-bottom: 20px;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
         }
 
         .hero p {
@@ -163,73 +212,517 @@
             box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         }
 
-        .hero-cta i {
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-cta:hover i {
-            transform: translateX(4px);
-        }
-
-        /* ========== SCREENS SECTION ========== */
-        .screens-section {
-            max-width: 1900px;
+        /* ========== SECCIONES ========== */
+        .section {
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 80px 24px 100px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            font-size: 16px;
-        }
-
-        /* Screen wrapper - SIN overflow:hidden para que no corte */
-        .screen-wrapper {
+            padding: 100px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            min-height: 100vh;
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            background: var(--white);
         }
 
-        .screen-wrapper.visible {
+        .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .screen-wrapper iframe {
-            display: block;
-            width: 100%;
-            border: none;
-            border-radius: 24px;
-            height: 800px;
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
         }
 
+        /* ========== COLUMNA TEXTO ========== */
+        .text-col {
+            flex: 0 0 420px;
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .text-col h2 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .text-col h2 span {
+            color: var(--primary);
+        }
+
+        .text-col p {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .feature-list li i {
+            color: var(--primary);
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .extra-text {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .extra-text p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .extra-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== PHONE FRAMES ========== */
+        .phone-col {
+            flex-shrink: 0;
+            position: relative;
+            padding: 40px 170px 40px 170px;
+        }
+
+        .phone-frame {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow:
+                0 25px 50px rgba(108, 92, 231, 0.15),
+                0 10px 20px rgba(0,0,0,0.08),
+                inset 0 0 0 1px rgba(0,0,0,0.05);
+            position: relative;
+            width: 300px;
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 120px; height: 28px;
+            background: var(--white);
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            background: var(--white);
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========== MULTIPLE PHONES ========== */
+        .phones-col {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .phone-wrapper {
+            position: relative;
+            padding: 30px 90px 30px 90px;
+        }
+
+        .phone-wrapper .phone-frame {
+            width: 260px;
+        }
+
+        .phone-wrapper .phone-frame::before {
+            width: 100px; height: 24px;
+        }
+
+        .phone-wrapper .phone-screen {
+            border-radius: 28px;
+        }
+
+        /* ========== BUBBLES ========== */
+        .bubble {
+            position: absolute;
+            background: var(--bubble-bg);
+            color: var(--bubble-text);
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            z-index: 30;
+            opacity: 0;
+            transform: scale(0.8);
+            max-width: 160px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .bubble i {
+            color: var(--primary-light);
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .bubble::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 0;
+            border-style: solid;
+        }
+
+        .bubble-left::after {
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 8px 6px 0;
+            border-color: transparent var(--bubble-bg) transparent transparent;
+        }
+
+        .bubble-right::after {
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 8px;
+            border-color: transparent transparent transparent var(--bubble-bg);
+        }
+
+        /* POSICIONES BURBUJAS - distribuidas verticalmente */
+        /* Bienvenida (3 burbujas) */
+        .bubble-logo  { top: 80px;  left: 22px; }
+        .bubble-slogan{ top: 200px; right: 22px; }
+        .bubble-version{ top: 380px; left: 28px; }
+
+        /* Onboarding 1 (3 burbujas) */
+        .ob1-b1 { top: 60px;  left: 12px; }
+        .ob1-b2 { top: 160px; right: 12px; }
+        .ob1-b3 { top: 280px; left: 16px; }
+
+        /* Onboarding 2 (2 burbujas) */
+        .ob2-b1 { top: 70px;  left: 12px; }
+        .ob2-b2 { top: 240px; right: 12px; }
+
+        /* Onboarding 3 (3 burbujas) */
+        .ob3-b1 { top: 55px;  left: 12px; }
+        .ob3-b2 { top: 170px; right: 12px; }
+        .ob3-b3 { top: 300px; left: 16px; }
+
+        /* Registro (4 burbujas) */
+        .reg-b1 { top: 70px;  left: 22px; }
+        .reg-b2 { top: 170px; right: 22px; }
+        .reg-b3 { top: 270px; left: 28px; }
+        .reg-b4 { top: 370px; right: 22px; }
+
+        /* Login (3 burbujas) */
+        .log-b1 { top: 80px;  left: 22px; }
+        .log-b2 { top: 190px; right: 22px; }
+        .log-b3 { top: 300px; left: 28px; }
+
+        /* Home 1 (5 burbujas) */
+        .h1-b1 { top: 50px;  left: 22px; }
+        .h1-b2 { top: 130px; right: 22px; }
+        .h1-b3 { top: 210px; left: 28px; }
+        .h1-b4 { top: 290px; right: 22px; }
+        .h1-b5 { top: 370px; left: 28px; }
+
+        /* Home 2 (4 burbujas) */
+        .h2-b1 { top: 50px;  left: 22px; }
+        .h2-b2 { top: 150px; right: 22px; }
+        .h2-b3 { top: 250px; left: 28px; }
+        .h2-b4 { top: 350px; right: 22px; }
+
+        /* Favoritos (5 burbujas) */
+        .fav-b1 { top: 60px;  left: 22px; }
+        .fav-b2 { top: 150px; right: 22px; }
+        .fav-b3 { top: 240px; left: 28px; }
+        .fav-b4 { top: 330px; right: 22px; }
+        .fav-b5 { top: 420px; left: 28px; }
+
+        /* Nuevo Anuncio 1 (5 burbujas) */
+        .na1-b1 { top: 50px;  left: 22px; }
+        .na1-b2 { top: 130px; right: 22px; }
+        .na1-b3 { top: 210px; left: 28px; }
+        .na1-b4 { top: 290px; right: 22px; }
+        .na1-b5 { top: 370px; left: 28px; }
+
+        /* Nuevo Anuncio 2 (4 burbujas) */
+        .na2-b1 { top: 70px;  left: 22px; }
+        .na2-b2 { top: 170px; right: 22px; }
+        .na2-b3 { top: 270px; left: 28px; }
+        .na2-b4 { top: 370px; right: 22px; }
+
+        /* Mis Anuncios (5 burbujas) */
+        .ad-b1 { top: 60px;  left: 22px; }
+        .ad-b2 { top: 150px; right: 22px; }
+        .ad-b3 { top: 240px; left: 28px; }
+        .ad-b4 { top: 330px; right: 22px; }
+        .ad-b5 { top: 420px; left: 28px; }
+
+        /* Perfil (5 burbujas) */
+        .prof-b1 { top: 60px;  left: 22px; }
+        .prof-b2 { top: 150px; right: 22px; }
+        .prof-b3 { top: 240px; left: 28px; }
+        .prof-b4 { top: 330px; right: 22px; }
+        .prof-b5 { top: 420px; left: 28px; }
+
+        /* Saldo (5 burbujas) */
+        .sal-b1 { top: 60px;  left: 22px; }
+        .sal-b2 { top: 150px; right: 22px; }
+        .sal-b3 { top: 240px; left: 28px; }
+        .sal-b4 { top: 330px; right: 22px; }
+        .sal-b5 { top: 420px; left: 28px; }
+
+        /* Sobre iMirly (5 burbujas) */
+        .about-b1 { top: 60px;  left: 22px; }
+        .about-b2 { top: 150px; right: 22px; }
+        .about-b3 { top: 240px; left: 28px; }
+        .about-b4 { top: 330px; right: 22px; }
+        .about-b5 { top: 420px; left: 28px; }
+
+        /* Contacto (5 burbujas) */
+        .contact-b1 { top: 60px;  left: 22px; }
+        .contact-b2 { top: 150px; right: 22px; }
+        .contact-b3 { top: 240px; left: 28px; }
+        .contact-b4 { top: 330px; right: 22px; }
+        .contact-b5 { top: 420px; left: 28px; }
+
+        /* Animaciones bubbles */
+        @keyframes bubbleIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        .b1 {
+            animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards,
+                       float 3s ease-in-out infinite 0.8s;
+        }
+        .b2 {
+            animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards,
+                       float2 3.5s ease-in-out infinite 1.0s;
+        }
+        .b3 {
+            animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards,
+                       float3 4s ease-in-out infinite 1.2s;
+        }
+        .b4 {
+            animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards,
+                       float 3.2s ease-in-out infinite 1.4s;
+        }
+        .b5 {
+            animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.0s forwards,
+                       float2 3.8s ease-in-out infinite 1.6s;
+        }
+
+
+        /* ========== BARRA DIVISORIA ========== */
+        .section-divider {
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            max-width: 800px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            opacity: 0.7;
+        }
+
+        .section-divider:first-of-type::before {
+            display: none;
+        }
         /* ========== FOOTER ========== */
         .footer {
             background: var(--text);
             color: white;
-            padding: 40px 24px;
+            padding: 50px 24px;
             text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 36px; height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .footer-logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
         }
 
         .footer p {
             font-size: 14px;
-            opacity: 0.7;
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .section, .section:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 24px;
+                gap: 50px;
+            }
+            .text-col { flex: none; max-width: 500px; }
+            .text-col h2 { font-size: 32px; }
+            .feature-list { align-items: center; }
+            .phone-col { padding: 30px 150px 30px 150px; }
+            .phones-col { gap: 25px; }
+            .phone-wrapper { padding: 25px 70px 25px 70px; }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .nav-links.mobile-open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                gap: 8px;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            .nav-links.mobile-open a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .phones-col { flex-direction: column; align-items: center; gap: 25px; }
+            .phone-wrapper { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+            .phone-wrapper .phone-frame { width: 240px; }
+            .phone-col { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+            .phone-frame { width: 240px; }
+            .bubble {
+                position: relative;
+                top: auto !important; left: auto !important;
+                right: auto !important; bottom: auto !important;
+                margin: 6px auto;
+                max-width: 90%;
+                animation: bubbleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            }
+            .bubble::after { display: none; }
+            .text-col h2 { font-size: 28px; }
+        }
+
+        @media (max-width: 500px) {
+            .section { padding: 60px 16px; }
+            .text-col h2 { font-size: 26px; }
+            .phone-frame { width: 220px; }
+            .phone-wrapper .phone-frame { width: 220px; }
+            .hero { padding: 120px 16px 60px; }
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -239,89 +732,698 @@
 <base target="_blank">
 </head>
 <body>
-    <header class="header">
-        <div class="header-inner">
-            <a href="#" class="logo">
-                <div class="logo-icon"><i class="ph ph-aperture"></i></div>
-                <span class="logo-text">Mirly</span>
-            </a>
-        </div>
-    </header>
 
+    <!-- ========== MENU STICKY ========== -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+                <div class="nav-logo-icon"><i class="ph ph-aperture"></i></div>
+                <span class="nav-logo-text">Mirly</span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                <i class="ph ph-list"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#bienvenida"><i class="ph ph-rocket-launch"></i> Bienvenida</a></li>
+                <li><a href="#aterrizaje"><i class="ph ph-slideshow"></i> Aterrizaje</a></li>
+                <li><a href="#acceso"><i class="ph ph-lock-key"></i> Acceso</a></li>
+                <li><a href="#principal"><i class="ph ph-house"></i> Principal</a></li>
+                <li><a href="#favoritos"><i class="ph ph-heart"></i> Favoritos</a></li>
+                <li><a href="#anuncio"><i class="ph ph-plus-circle"></i> Anuncio</a></li>
+                <li><a href="#mis-anuncios"><i class="ph ph-list-dashes"></i> Mis Anuncios</a></li>
+                <li><a href="#perfil"><i class="ph ph-user-circle"></i> Perfil</a></li>
+                <li><a href="#saldo"><i class="ph ph-currency-eur"></i> Saldo</a></li>
+                <li><a href="#sobre"><i class="ph ph-info"></i> Sobre</a></li>
+                <li><a href="#contacto"><i class="ph ph-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge"><i class="ph ph-sparkle"></i> La app de servicios locales</div>
             <h1>Servicios locales,<br>soluciones reales</h1>
             <p>Conecta con profesionales cualificados en tu zona. Desde belleza y hogar hasta educación y eventos. Todo en una sola app.</p>
-            <button class="hero-cta" onclick="document.getElementById('screens').scrollIntoView({behavior:'smooth'})">
+            <button class="hero-cta" onclick="document.getElementById('bienvenida').scrollIntoView({behavior:'smooth'})">
                 Descubre cómo funciona
                 <i class="ph ph-arrow-right"></i>
             </button>
         </div>
     </section>
 
-    <section class="screens-section" id="screens">
-        <div class="section-title">
-            <h2>Así funciona iMirly</h2>
-            <p>Un recorrido por todas las pantallas de la aplicación</p>
+    <!-- ========== BIENVENIDA ========== -->
+    <section class="section section-divider" id="bienvenida">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-rocket-launch"></i> Paso 1</div>
+            <h2>Pantalla de <span>Bienvenida</span></h2>
+            <p>El splash es la primera impresión de iMirly. Muestra la identidad visual de la marca, el eslogan y prepara al usuario para la experiencia. Es el punto de entrada donde el usuario conoce la app antes de interactuar con ella.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-paint-brush"></i> Logo con identidad visual única y memorable</li>
+                <li><i class="ph ph-sparkle"></i> Eslogan: "Servicios locales, soluciones reales"</li>
+                <li><i class="ph ph-device-mobile"></i> Indicador de versión 1.0.0 de la app</li>
+            </ul>
+<div class="extra-text">
+            <p>La pantalla de bienvenida establece el tono visual de toda la experiencia. Con un diseño limpio y colores vibrantes, el usuario sabe inmediatamente que está entrando en una app moderna y profesional.</p>
+            <p>El logo animado y el eslogan crean una conexión emocional desde el primer segundo, transmitiendo confianza y cercanía.</p>
         </div>
-
-        <!-- 1.html: Splash con texto a la izquierda - altura 750 -->
-        <div class="screen-wrapper" data-screen="1">
-            <iframe src="1.html" width="100%" height="750" scrolling="no"></iframe>
         </div>
-
-        <!-- 2.html: 3 Onboarding con título debajo - altura 900 -->
-        <div class="screen-wrapper" data-screen="2">
-            <iframe src="2.html" width="100%" height="900" scrolling="no"></iframe>
-        </div>
-
-        <!-- 3.html: Login + Registro con título debajo - altura 850 -->
-        <div class="screen-wrapper" data-screen="3">
-            <iframe src="3.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-
-                <!-- 4.html: Login + Registro con título debajo - altura 850 -->
-        <div class="screen-wrapper" data-screen="3">
-            <iframe src="4.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="5.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="6.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="7.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="8.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 bubble-logo">
+                <i class="ph ph-paint-brush"></i>
+                <span>Logo de iMirly con identidad visual</span>
+            </div>
+            <div class="bubble bubble-right b2 bubble-slogan">
+                <i class="ph ph-sparkle"></i>
+                <span>Eslogan que define el propósito</span>
+            </div>
+            <div class="bubble bubble-left b3 bubble-version">
+                <i class="ph ph-device-mobile"></i>
+                <span>Versión 1.0.0 de la app</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/01_Splash.png" alt="bienvenida">
                 </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="9.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="10.html" width="100%" height="850" scrolling="no"></iframe>
-        </div>
-                </div>
-                <div class="screen-wrapper" data-screen="3">
-            <iframe src="11.html" width="100%" height="850" scrolling="no"></iframe>
+            </div>
         </div>
     </section>
 
+    <!-- ========== ATERRIZAJE ========== -->
+    <section class="section section-divider" id="aterrizaje">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-slideshow"></i> Paso 2</div>
+            <h2>Pantallas de <span>Aterrizaje</span></h2>
+            <p>Tres pantallas que te explican el funcionamiento de iMirly antes de entrar a la app. Descubre, conecta y reserva en pocos pasos. Cada pantalla está diseñada para guiar al usuario de forma intuitiva.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-map-pin"></i> Encuentra profesionales cerca de tu ubicación</li>
+                <li><i class="ph ph-handshake"></i> Contacto directo sin intermediarios ni comisiones</li>
+                <li><i class="ph ph-shield-check"></i> Reserva con pagos seguros y garantía</li>
+            </ul>
+<div class="extra-text">
+            <p>Las pantallas de onboarding presentan los beneficios clave de iMirly de forma visual y atractiva. Cada slide tiene una imagen representativa, un título claro y una descripción concisa.</p>
+            <p>El usuario puede avanzar paso a paso o saltar directamente al login si ya conoce la app. Los indicadores de progreso muestran en qué punto del recorrido se encuentra.</p>
+        </div>
+        </div>
+        <div class="phones-col">
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 ob1-b1">
+                <i class="ph ph-map-pin"></i>
+                <span>Encuentra profesionales cerca</span>
+            </div>
+            <div class="bubble bubble-right b2 ob1-b2">
+                <i class="ph ph-house"></i>
+                <span>Múltiples categorías</span>
+            </div>
+            <div class="bubble bubble-left b3 ob1-b3">
+                <i class="ph ph-arrow-right"></i>
+                <span>Avanza al siguiente paso</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/02-iMirly1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 ob2-b1">
+                <i class="ph ph-handshake"></i>
+                <span>Contacto directo</span>
+            </div>
+            <div class="bubble bubble-right b2 ob2-b2">
+                <i class="ph ph-chat-circle-text"></i>
+                <span>Chat integrado</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/03-iMirly2.png" alt="">
+                    </div>
+                </div>
+            </div>
+                    </div>
+    </section>
+
+<!-- ========== ACCESO ========== -->
+    <section class="section section-divider" id="acceso">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-lock-key"></i> Paso 3</div>
+            <h2>Accede a tu <span>Cuenta</span></h2>
+            <p>Regístrate como nuevo usuario o inicia sesión para acceder a todos los servicios de iMirly. Los formularios son sencillos, seguros y rápidos. En menos de un minuto estarás listo para publicar o contratar.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-user-plus"></i> Crear cuenta nueva en segundos con tu email</li>
+                <li><i class="ph ph-envelope"></i> Inicia sesión con tu email y contraseña</li>
+                <li><i class="ph ph-shield-check"></i> Contraseñas seguras con visibilidad toggle</li>
+            </ul>
+<div class="extra-text">
+            <p>El proceso de registro está optimizado para que el usuario pueda empezar a usar la app lo antes posible. Solo se solicitan los datos esenciales: nombre, email y contraseña.</p>
+            <p>La pantalla de login ofrece una experiencia fluida con campos validados en tiempo real y la opción de mostrar u ocultar la contraseña para mayor comodidad.</p>
+        </div>
+        </div>
+        <div class="phones-col">
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 reg-b1">
+                <i class="ph ph-user-plus"></i>
+                <span>Crear cuenta nueva</span>
+            </div>
+            <div class="bubble bubble-right b2 reg-b2">
+                <i class="ph ph-identification-card"></i>
+                <span>Nombre, email y contraseña</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b3">
+                <i class="ph ph-eye"></i>
+                <span>Mostrar u ocultar contraseña</span>
+            </div>
+            <div class="bubble bubble-right b4 reg-b4">
+                <i class="ph ph-arrow-u-up-left"></i>
+                <span>¿Ya tienes cuenta? Ir al login</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/05-Registro.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 log-b1">
+                <i class="ph ph-envelope"></i>
+                <span>Inicia sesión con tu email</span>
+            </div>
+            <div class="bubble bubble-right b2 log-b2">
+                <i class="ph ph-lock-key"></i>
+                <span>Contraseña con visibilidad</span>
+            </div>
+            <div class="bubble bubble-left b3 log-b3">
+                <i class="ph ph-user-circle-plus"></i>
+                <span>¿Nuevo? Crear cuenta aquí</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/06-Login.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRINCIPAL ========== -->
+    <section class="section section-divider" id="principal">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-house"></i> Paso 4</div>
+            <h2>Pantalla <span>Principal</span></h2>
+            <p>La home de iMirly es el centro de la experiencia. Busca servicios, explora categorías y accede a todas las funciones desde un solo lugar. Diseñada para que encuentres lo que necesitas en segundos.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-magnifying-glass"></i> Buscador inteligente de servicios locales</li>
+                <li><i class="ph ph-squares-four"></i> Categorías organizadas por tipo de servicio</li>
+                <li><i class="ph ph-plus-circle"></i> Publica tu propio anuncio con un solo tap</li>
+            </ul>
+<div class="extra-text">
+            <p>La pantalla principal muestra estadísticas en tiempo real: más de 2.500 profesionales registrados, valoración media de 4.8 estrellas y más de 15.000 servicios disponibles.</p>
+            <p>Las categorías populares incluyen Estética y Belleza, Hogar, Mascotas, Educación, Deporte y Salud, Cuidado, y Eventos. Cada una con ilustraciones personalizadas y contador de profesionales.</p>
+        </div>
+        </div>
+        <div class="phones-col">
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 h1-b1">
+                <i class="ph ph-magnifying-glass"></i>
+                <span>Buscador de servicios</span>
+            </div>
+            <div class="bubble bubble-right b2 h1-b2">
+                <i class="ph ph-chart-bar"></i>
+                <span>Stats de profesionales</span>
+            </div>
+            <div class="bubble bubble-left b3 h1-b3">
+                <i class="ph ph-sparkle"></i>
+                <span>Banner promocional</span>
+            </div>
+            <div class="bubble bubble-right b4 h1-b4">
+                <i class="ph ph-tag"></i>
+                <span>Categorías populares</span>
+            </div>
+            <div class="bubble bubble-left b5 h1-b5">
+                <i class="ph ph-squares-four"></i>
+                <span>Navegación inferior</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/07-Home.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 h2-b1">
+                <i class="ph ph-paint-brush"></i>
+                <span>Ilustraciones por categoría</span>
+            </div>
+            <div class="bubble bubble-right b2 h2-b2">
+                <i class="ph ph-list"></i>
+                <span>Mascotas, Educación, etc.</span>
+            </div>
+            <div class="bubble bubble-left b3 h2-b3">
+                <i class="ph ph-users"></i>
+                <span>Contador de profesionales</span>
+            </div>
+            <div class="bubble bubble-right b4 h2-b4">
+                <i class="ph ph-plus-circle"></i>
+                <span>Botón Publicar</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/07-Home1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAVORITOS ========== -->
+    <section class="section section-divider" id="favoritos">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-heart"></i> Paso 5</div>
+            <h2>Tus <span>Favoritos</span></h2>
+            <p>Guarda los profesionales y servicios que más te gustan para acceder a ellos rápidamente. Tu lista personalizada siempre a mano, con toda la información de contacto y precios actualizada.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-heart"></i> Guarda profesionales favoritos con un tap</li>
+                <li><i class="ph ph-star"></i> Consulta valoraciones y reseñas guardadas</li>
+                <li><i class="ph ph-bell"></i> Recibe notificaciones de tus favoritos</li>
+            </ul>
+<div class="extra-text">
+            <p>La sección de favoritos funciona como tu agenda personal de profesionales. Cada tarjeta muestra el nombre, categoría, precio por hora, valoración en estrellas y número de reseñas.</p>
+            <p>Puedes eliminar profesionales de tu lista en cualquier momento o acceder directamente a su perfil para contactar. El icono de corazón en la esquina permite añadir o quitar de favoritos al instante.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 fav-b1">
+                <i class="ph ph-heart"></i>
+                <span>Lista de favoritos guardados</span>
+            </div>
+            <div class="bubble bubble-right b2 fav-b2">
+                <i class="ph ph-star"></i>
+                <span>Valoraciones de profesionales</span>
+            </div>
+            <div class="bubble bubble-left b3 fav-b3">
+                <i class="ph ph-bell"></i>
+                <span>Notificaciones activas</span>
+            </div>
+            <div class="bubble bubble-right b4 fav-b4">
+                <i class="ph ph-trash"></i>
+                <span>Eliminar de favoritos</span>
+            </div>
+            <div class="bubble bubble-left b5 fav-b5">
+                <i class="ph ph-arrow-right"></i>
+                <span>Ver perfil del profesional</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/08-Favoritos.png" alt="favoritos">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ANUNCIO ========== -->
+    <section class="section section-divider" id="anuncio">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-plus-circle"></i> Paso 6</div>
+            <h2>Nuevo <span>Anuncio</span></h2>
+            <p>Publica tu servicio o necesidad en iMirly de forma rápida y sencilla. Completa los datos, añade imágenes y llega a miles de usuarios en tu zona. El proceso está dividido en dos pasos claros.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-pencil-simple"></i> Formulario intuitivo paso a paso para crear anuncios</li>
+                <li><i class="ph ph-image"></i> Sube fotos de tu servicio para destacar</li>
+                <li><i class="ph ph-check-circle"></i> Publica y gestiona todos tus anuncios</li>
+            </ul>
+<div class="extra-text">
+            <p>En el primer paso introduces el título del servicio, el precio por hora, la ubicación y una descripción detallada. También puedes subir una imagen representativa desde tu galería.</p>
+            <p>El segundo paso te permite clasificar tu servicio seleccionando la categoría (Estética, Hogar, Mascotas, Educación...) y la especialidad correspondiente. Una vez publicado, tu anuncio aparecerá en la home.</p>
+        </div>
+        </div>
+        <div class="phones-col">
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 na1-b1">
+                <i class="ph ph-pencil-simple"></i>
+                <span>Título del anuncio</span>
+            </div>
+            <div class="bubble bubble-right b2 na1-b2">
+                <i class="ph ph-list"></i>
+                <span>Selecciona categoría</span>
+            </div>
+            <div class="bubble bubble-left b3 na1-b3">
+                <i class="ph ph-text-t"></i>
+                <span>Descripción del servicio</span>
+            </div>
+            <div class="bubble bubble-right b4 na1-b4">
+                <i class="ph ph-image"></i>
+                <span>Subir fotos</span>
+            </div>
+            <div class="bubble bubble-left b5 na1-b5">
+                <i class="ph ph-currency-eur"></i>
+                <span>Precio del servicio</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/09-NuevoAnuncio1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="phone-wrapper">
+            <div class="bubble bubble-left b1 na2-b1">
+                <i class="ph ph-map-pin"></i>
+                <span>Ubicación del servicio</span>
+            </div>
+            <div class="bubble bubble-right b2 na2-b2">
+                <i class="ph ph-phone"></i>
+                <span>Teléfono de contacto</span>
+            </div>
+            <div class="bubble bubble-left b3 na2-b3">
+                <i class="ph ph-check-circle"></i>
+                <span>Revisar y confirmar</span>
+            </div>
+            <div class="bubble bubble-right b4 na2-b4">
+                <i class="ph ph-paper-plane-right"></i>
+                <span>Publicar anuncio</span>
+            </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="imagenes/10-NuevoAnuncio2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MIS-ANUNCIOS ========== -->
+    <section class="section section-divider" id="mis-anuncios">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-list-dashes"></i> Paso 7</div>
+            <h2>Mis <span>Anuncios</span></h2>
+            <p>Gestiona todos los anuncios que has publicado en iMirly desde un panel de control centralizado. Edita, activa, pausa o elimina tus servicios según tus necesidades en cualquier momento.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-eye"></i> Visualiza todos tus anuncios activos e inactivos</li>
+                <li><i class="ph ph-pencil-simple"></i> Edita la información de cualquier anuncio</li>
+                <li><i class="ph ph-toggle-right"></i> Activa o pausa publicaciones al instante</li>
+            </ul>
+<div class="extra-text">
+            <p>Cada anuncio muestra su estado actual (Activo/Inactivo), el precio configurado y las acciones disponibles: editar con el lápiz o eliminar con la papelera.</p>
+            <p>La navegación por pestañas te permite filtrar entre anuncios activos e inactivos. Un indicador visual muestra el número de anuncios en cada categoría para que tengas el control total.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 ad-b1">
+                <i class="ph ph-list-dashes"></i>
+                <span>Lista de tus anuncios</span>
+            </div>
+            <div class="bubble bubble-right b2 ad-b2">
+                <i class="ph ph-eye"></i>
+                <span>Estado del anuncio</span>
+            </div>
+            <div class="bubble bubble-left b3 ad-b3">
+                <i class="ph ph-pencil-simple"></i>
+                <span>Editar anuncio</span>
+            </div>
+            <div class="bubble bubble-right b4 ad-b4">
+                <i class="ph ph-toggle-right"></i>
+                <span>Activar o pausar</span>
+            </div>
+            <div class="bubble bubble-left b5 ad-b5">
+                <i class="ph ph-trash"></i>
+                <span>Eliminar anuncio</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/11-MisAnuncios.png" alt="mis-anuncios">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PERFIL ========== -->
+    <section class="section section-divider" id="perfil">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-user-circle"></i> Paso 8</div>
+            <h2>Mi <span>Perfil</span></h2>
+            <p>Gestiona tu información personal en iMirly. Edita tus datos, cambia tu foto de perfil, revisa tu saldo y configura tus preferencias de contacto. Todo desde un menú organizado y accesible.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-user-circle"></i> Foto de perfil y nombre personalizable</li>
+                <li><i class="ph ph-gear"></i> Configuración de cuenta y preferencias</li>
+                <li><i class="ph ph-sign-out"></i> Cerrar sesión de forma segura</li>
+            </ul>
+<div class="extra-text">
+            <p>El perfil muestra tu avatar con las iniciales, tu nombre de usuario y la valoración global que has recibido. Desde aquí accedes a todas las opciones de gestión de tu cuenta.</p>
+            <p>El menú incluye accesos directos a Mis Anuncios, Saldo, Datos Personales, Cambiar Contraseña, Chat de Mirly, Sobre Mirly, Ayuda y Contacto. El botón de cerrar sesión está destacado en rojo.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 prof-b1">
+                <i class="ph ph-user-circle"></i>
+                <span>Foto de perfil</span>
+            </div>
+            <div class="bubble bubble-right b2 prof-b2">
+                <i class="ph ph-identification-badge"></i>
+                <span>Información personal</span>
+            </div>
+            <div class="bubble bubble-left b3 prof-b3">
+                <i class="ph ph-envelope"></i>
+                <span>Email de contacto</span>
+            </div>
+            <div class="bubble bubble-right b4 prof-b4">
+                <i class="ph ph-gear"></i>
+                <span>Configuración</span>
+            </div>
+            <div class="bubble bubble-left b5 prof-b5">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/11-Perfil.png" alt="perfil">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SALDO ========== -->
+    <section class="section section-divider" id="saldo">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-currency-eur"></i> Paso 9</div>
+            <h2>Tu <span>Saldo</span></h2>
+            <p>Consulta tu saldo disponible, retira fondos a tu cuenta bancaria o ingresa dinero para realizar pagos. Gestiona tus transacciones y participa en el programa de referidos para ganar recompensas.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-currency-eur"></i> Saldo disponible consultable en tiempo real</li>
+                <li><i class="ph ph-arrow-down"></i> Retira fondos fácilmente a tu cuenta bancaria</li>
+                <li><i class="ph ph-gift"></i> Programa de referidos: gana 10€ por cada amigo</li>
+            </ul>
+<div class="extra-text">
+            <p>El panel de saldo muestra de forma clara tu dinero disponible, el importe pendiente de liberación y lo que has generado este mes. Dos botones principales permiten retirar o ingresar fondos.</p>
+            <p>El programa "Invita y gana" te recompensa con 10€ por cada amigo que se registre usando tu enlace. La sección de transacciones recientes mantiene un historial completo de todos tus movimientos.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 sal-b1">
+                <i class="ph ph-currency-eur"></i>
+                <span>Saldo disponible</span>
+            </div>
+            <div class="bubble bubble-right b2 sal-b2">
+                <i class="ph ph-arrow-down"></i>
+                <span>Retirar fondos</span>
+            </div>
+            <div class="bubble bubble-left b3 sal-b3">
+                <i class="ph ph-arrow-up"></i>
+                <span>Ingresar dinero</span>
+            </div>
+            <div class="bubble bubble-right b4 sal-b4">
+                <i class="ph ph-gift"></i>
+                <span>Invita y gana</span>
+            </div>
+            <div class="bubble bubble-left b5 sal-b5">
+                <i class="ph ph-clock"></i>
+                <span>Transacciones recientes</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/12.Saldo.png" alt="saldo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section class="section section-divider" id="sobre">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-info"></i> Paso 10</div>
+            <h2>Sobre <span>iMirly</span></h2>
+            <p>Conoce más sobre iMirly, nuestra misión, visión y valores. Descubre quiénes somos, por qué conectamos profesionales con quienes los necesitan y los números que respaldan nuestro crecimiento.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-target"></i> Nuestra misión: conectar personas y profesionales</li>
+                <li><i class="ph ph-eye"></i> Visión de futuro: líderes en servicios locales</li>
+                <li><i class="ph ph-heart"></i> Valores que nos definen: confianza y comunidad</li>
+            </ul>
+<div class="extra-text">
+            <p>iMirly nace con el propósito de facilitar la vida de la comunidad conectando a personas que necesitan servicios con profesionales cualificados de manera fácil, rápida y segura.</p>
+            <p>Nuestros valores fundamentales son la Confianza (verificamos todos los profesionales), la Comunidad (construimos una red de confianza) y la Seguridad (protegemos tus datos y transacciones). Ya somos más de 50.000 usuarios, 10.000 profesionales y 100.000 servicios.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 about-b1">
+                <i class="ph ph-info"></i>
+                <span>Información sobre iMirly</span>
+            </div>
+            <div class="bubble bubble-right b2 about-b2">
+                <i class="ph ph-target"></i>
+                <span>Nuestra misión</span>
+            </div>
+            <div class="bubble bubble-left b3 about-b3">
+                <i class="ph ph-eye"></i>
+                <span>Visión de futuro</span>
+            </div>
+            <div class="bubble bubble-right b4 about-b4">
+                <i class="ph ph-heart"></i>
+                <span>Valores corporativos</span>
+            </div>
+            <div class="bubble bubble-left b5 about-b5">
+                <i class="ph ph-users"></i>
+                <span>Equipo iMirly</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/13.SobreiMirly.png" alt="sobre">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="section section-divider" id="contacto">
+        <div class="text-col">
+            <div class="step-badge"><i class="ph ph-envelope"></i> Paso 11</div>
+            <h2>Contácta<span>nos</span></h2>
+            <p>¿Tienes dudas, sugerencias o necesitas ayuda? Estamos aquí para escucharte. Escríbenos a través de cualquiera de nuestros canales y te responderemos lo antes posible. Tu opinión nos importa.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-envelope"></i> Formulario de contacto directo con soporte</li>
+                <li><i class="ph ph-phone"></i> Teléfono de atención disponible de lunes a viernes</li>
+                <li><i class="ph ph-map-pin"></i> Oficinas centrales para visitas presenciales</li>
+            </ul>
+<div class="extra-text">
+            <p>Ofrecemos múltiples vías de contacto: email (soporte@imirly.com con respuesta en 24-48h), chat en vivo disponible de lunes a viernes de 9:00 a 18:00, y teléfono de atención al +34 900 123 456.</p>
+            <p>El formulario de contacto te permite seleccionar el motivo (soporte técnico, consulta general, sugerencia), indicar tu nombre, email, asunto y mensaje detallado. Nuestro equipo se pondrá en contacto contigo a la mayor brevedad.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 contact-b1">
+                <i class="ph ph-envelope"></i>
+                <span>Formulario de contacto</span>
+            </div>
+            <div class="bubble bubble-right b2 contact-b2">
+                <i class="ph ph-user"></i>
+                <span>Tu nombre</span>
+            </div>
+            <div class="bubble bubble-left b3 contact-b3">
+                <i class="ph ph-text-t"></i>
+                <span>Mensaje o consulta</span>
+            </div>
+            <div class="bubble bubble-right b4 contact-b4">
+                <i class="ph ph-paper-plane-right"></i>
+                <span>Enviar mensaje</span>
+            </div>
+            <div class="bubble bubble-left b5 contact-b5">
+                <i class="ph ph-phone"></i>
+                <span>Teléfono de contacto</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/14.ContactaNosotros.png" alt="contacto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
-        <p>&copy; 2026 iMirly. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-icon"><i class="ph ph-aperture"></i></div>
+                <span class="footer-logo-text">Mirly</span>
+            </div>
+            <p>Servicios locales, soluciones reales</p>
+            <p>&copy; 2026 iMirly. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#bienvenida">Inicio</a>
+                <a href="#sobre">Sobre nosotros</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#">Privacidad</a>
+                <a href="#">T&eacute;rminos</a>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Intersection Observer para animaciones de entrada
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.screen-wrapper').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+        // Scroll spy para menu activo + efecto scroll en nav
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const mainNav = document.getElementById('mainNav');
+        const navHeight = 64; // altura del menu
+
+        function updateActiveLink() {
+            let current = '';
+            const scrollPos = window.scrollY + navHeight + 50;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            if (window.scrollY > 50) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+
+        // NAVEGACION: scroll desde posicion actual, NO desde hero
+        // Usamos scrollIntoView con block: 'start' y compensamos el menu
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const targetPos = targetSection.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPos,
+                        behavior: 'smooth'
+                    });
+                }
+                document.getElementById('navLinks').classList.remove('mobile-open');
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('mobile-open');
+        }
     </script>
 </body>
 </html>
