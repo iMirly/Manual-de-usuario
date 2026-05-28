@@ -372,7 +372,7 @@
 
         .phone-wrapper {
             position: relative;
-            padding: 30px 90px 30px 90px;
+            padding: 30px 110px 30px 110px;
         }
 
         .phone-wrapper .phone-frame {
@@ -385,6 +385,14 @@
 
         .phone-wrapper .phone-screen {
             border-radius: 28px;
+        }
+
+        /* Burbujas más compactas para secciones con dos teléfonos */
+        .phone-wrapper .bubble {
+            max-width: 96px;
+            font-size: 11px;
+            padding: 8px 10px;
+            line-height: 1.3;
         }
 
         /* ========== BUBBLES ========== */
@@ -423,15 +431,8 @@
             border-style: solid;
         }
 
+        /* Burbuja a la IZQUIERDA del teléfono → flecha apunta a la DERECHA (hacia el teléfono) */
         .bubble-left::after {
-            left: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 6px 8px 6px 0;
-            border-color: transparent var(--bubble-bg) transparent transparent;
-        }
-
-        .bubble-right::after {
             right: -6px;
             top: 50%;
             transform: translateY(-50%);
@@ -439,104 +440,175 @@
             border-color: transparent transparent transparent var(--bubble-bg);
         }
 
-        /* POSICIONES BURBUJAS - distribuidas verticalmente */
-        /* Bienvenida (3 burbujas) */
-        .bubble-logo  { top: 80px;  left: 22px; }
-        .bubble-slogan{ top: 200px; right: 22px; }
-        .bubble-version{ top: 380px; left: 28px; }
+        /* Burbuja a la DERECHA del teléfono → flecha apunta a la IZQUIERDA (hacia el teléfono) */
+        .bubble-right::after {
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 8px 6px 0;
+            border-color: transparent var(--bubble-bg) transparent transparent;
+        }
 
-        /* Onboarding 1 (3 burbujas) */
-        .ob1-b1 { top: 60px;  left: 12px; }
-        .ob1-b2 { top: 160px; right: 12px; }
-        .ob1-b3 { top: 280px; left: 16px; }
+        .bubble-top::after {
+            left: 50%;
+            top: -6px;
+            transform: translateX(-50%);
+            border-width: 0 6px 8px 6px;
+            border-style: solid;
+            border-color: transparent transparent var(--bubble-bg) transparent;
+        }
 
-        /* Onboarding 2 (2 burbujas) */
-        .ob2-b1 { top: 70px;  left: 12px; }
-        .ob2-b2 { top: 240px; right: 12px; }
+        .bubble-bottom::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -6px;
+            transform: translateX(-50%);
+            border-width: 8px 6px 0 6px;
+            border-style: solid;
+            border-color: var(--bubble-bg) transparent transparent transparent;
+        }
 
-        /* Onboarding 3 (3 burbujas) */
-        .ob3-b1 { top: 55px;  left: 12px; }
-        .ob3-b2 { top: 170px; right: 12px; }
-        .ob3-b3 { top: 300px; left: 16px; }
+        .bubble-both::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 8px 6px 0;
+            border-style: solid;
+            border-color: transparent var(--bubble-bg) transparent transparent;
+        }
 
-        /* Registro (4 burbujas) */
-        .reg-b1 { top: 70px;  left: 22px; }
-        .reg-b2 { top: 170px; right: 22px; }
-        .reg-b3 { top: 270px; left: 28px; }
-        .reg-b4 { top: 370px; right: 22px; }
+        .bubble-both::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--bubble-bg);
+        }
 
-        /* Login (3 burbujas) */
-        .log-b1 { top: 80px;  left: 22px; }
-        .log-b2 { top: 190px; right: 22px; }
-        .log-b3 { top: 300px; left: 28px; }
+        /* POSICIONES BURBUJAS — alineadas al contenido real de cada pantalla */
 
-        /* Home 1 (5 burbujas) */
-        .h1-b1 { top: 50px;  left: 22px; }
-        .h1-b2 { top: 130px; right: 22px; }
-        .h1-b3 { top: 210px; left: 28px; }
-        .h1-b4 { top: 290px; right: 22px; }
-        .h1-b5 { top: 370px; left: 28px; }
+        /* Bienvenida — Splash (phone-col 300px, pantalla ~590px, inicio y=52) */
+        /* Logo+iMirly centrados ~52% | Eslogan ~67% | Versión ~82% */
+        .bubble-logo   { top: 300px; left: 100px; }
+        .bubble-slogan { top: 423px; right: 8px; max-width: 200px; }
+        .bubble-version{ top: 500px; left: 8px; }
 
-        /* Home 2 (4 burbujas) */
-        .h2-b1 { top: 50px;  left: 22px; }
-        .h2-b2 { top: 150px; right: 22px; }
-        .h2-b3 { top: 250px; left: 28px; }
-        .h2-b4 { top: 350px; right: 22px; }
+        /* Onboarding 1 (phone-wrapper 260px, pantalla ~512px, inicio y=42) */
+        /* Foto ~24% | Heading "Encuentra" ~43% | Botón "Siguiente" ~70% */
+        .ob1-b1 { top: 242px; left: 8px; }
+        .ob1-b2 { top: 143px; right: 8px; }
+        .ob1-b3 { top: 378px; left: 8px; }
 
-        /* Favoritos (5 burbujas) */
-        .fav-b1 { top: 60px;  left: 22px; }
-        .fav-b2 { top: 150px; right: 22px; }
-        .fav-b3 { top: 240px; left: 28px; }
-        .fav-b4 { top: 330px; right: 22px; }
-        .fav-b5 { top: 420px; left: 28px; }
+        /* Onboarding 2 (phone-wrapper) */
+        /* Heading "Conecta" ~43% | Botón ~70% */
+        .ob2-b1 { top: 465px; left: -130px; max-width: 230px !important; } 
+        .ob2-b2 { top: 545px; right: 147px; max-width: 230px !important; }
 
-        /* Nuevo Anuncio 1 (5 burbujas) */
-        .na1-b1 { top: 50px;  left: 22px; }
-        .na1-b2 { top: 130px; right: 22px; }
-        .na1-b3 { top: 210px; left: 28px; }
-        .na1-b4 { top: 290px; right: 22px; }
-        .na1-b5 { top: 370px; left: 28px; }
+        /* Onboarding 3 (phone-wrapper) */
+        .ob3-b1 { top: 246px; left: 8px; }
+        .ob3-b2 { top: 378px; right: 8px; }
+        .ob3-b3 { top: 120px; left: 8px; }
 
-        /* Nuevo Anuncio 2 (4 burbujas) */
-        .na2-b1 { top: 70px;  left: 22px; }
-        .na2-b2 { top: 170px; right: 22px; }
-        .na2-b3 { top: 270px; left: 28px; }
-        .na2-b4 { top: 370px; right: 22px; }
+        /* Registro (phone-wrapper) */
+        /* Heading "Crear cuenta" ~22% | Campo Nombre ~29% | Contraseña ~45% | Enlace login ~72% */
+        .reg-b1 { top: 75px; left: 145px; max-width: 230px !important; }
+        .reg-b2 { top: 170px; right: 8px; }
+        .reg-b3 { top: 230px; left: -30px; max-width: 230px !important; }
+        .reg-b4 { top: 275px; left: 40px; max-width: 230px !important; }
+        .reg-b5 { top: 320px; left: 8px; max-width: 230px !important; }
+        .reg-b6 { top: 400px; left: -60px; max-width: 175px !important; }
+        .reg-b7 { top: 365px; left: -115px; max-width: 230px !important; }
+        .reg-b8 { top: 125px; right: 120px; max-width: 250px !important; }
+        
+        /* Login (phone-wrapper) */
+        /* Campo Email ~33% | Contraseña ~43% | Enlace crear cuenta ~63% */
+        .log-b1 { top: 190px; left: 8px; }
+        .log-b2 { top: 242px; right: 8px; }
+        .log-b3 { top: 345px; left: 8px; }
 
-        /* Mis Anuncios (5 burbujas) */
-        .ad-b1 { top: 60px;  left: 22px; }
-        .ad-b2 { top: 150px; right: 22px; }
-        .ad-b3 { top: 240px; left: 28px; }
-        .ad-b4 { top: 330px; right: 22px; }
-        .ad-b5 { top: 420px; left: 28px; }
+        /* Home 1 (phone-wrapper) */
+        /* Buscador ~10% | Banner ~25% | Stats ~38% | Categorías heading ~44% | NavBar ~90% */
+        .h1-b1 { top: 73px;  left: 8px; }
+        .h1-b2 { top: 198px; right: 8px; }
+        .h1-b3 { top: 148px; left: 8px; }
+        .h1-b4 { top: 258px; right: 8px; }
+        .h1-b5 { top: 478px; left: 8px; }
 
-        /* Perfil (5 burbujas) */
-        .prof-b1 { top: 60px;  left: 22px; }
-        .prof-b2 { top: 150px; right: 22px; }
-        .prof-b3 { top: 240px; left: 28px; }
-        .prof-b4 { top: 330px; right: 22px; }
-        .prof-b5 { top: 420px; left: 28px; }
+        /* Home 2 (phone-wrapper) */
+        /* Fila 1 (Estética/Hogar) ~11% | Fila 2 (Mascotas/Edu) ~33% | Fila 3 (Deporte/Cuidado) ~56% | NavBar ~91% */
+        .h2-b1 { top: 76px;  left: 8px; }
+        .h2-b2 { top: 190px; right: 8px; }
+        .h2-b3 { top: 308px; left: 8px; }
+        .h2-b4 { top: 486px; right: 8px; }
 
-        /* Saldo (5 burbujas) */
-        .sal-b1 { top: 60px;  left: 22px; }
-        .sal-b2 { top: 150px; right: 22px; }
-        .sal-b3 { top: 240px; left: 28px; }
-        .sal-b4 { top: 330px; right: 22px; }
-        .sal-b5 { top: 420px; left: 28px; }
+        /* Favoritos (phone-col 300px, pantalla ~590px, inicio y=52) */
+        /* Heading ~3% | Card nombre ~12% | Rating ~16% | Precio/Corazón ~16% | NavBar ~90% */
+        .fav-b1 { top: 38px;  left: 8px; }
+        .fav-b2 { top: 110px; right: 8px; }
+        .fav-b3 { top: 103px; left: 8px; }
+        .fav-b4 { top: 160px; right: 8px; }
+        .fav-b5 { top: 555px; left: 8px; }
 
-        /* Sobre iMirly (5 burbujas) */
-        .about-b1 { top: 60px;  left: 22px; }
-        .about-b2 { top: 150px; right: 22px; }
-        .about-b3 { top: 240px; left: 28px; }
-        .about-b4 { top: 330px; right: 22px; }
-        .about-b5 { top: 420px; left: 28px; }
+        /* Nuevo Anuncio 1 (phone-wrapper) */
+        /* Paso/barra ~8% | Upload imagen ~23% | Título ~35% | Precio ~44% | Descripción ~67% */
+        .na1-b1 { top: 193px; left: 8px; }
+        .na1-b2 { top: 55px;  right: 8px; }
+        .na1-b3 { top: 368px; left: 8px; }
+        .na1-b4 { top: 137px; right: 8px; }
+        .na1-b5 { top: 255px; left: 8px; }
 
-        /* Contacto (5 burbujas) */
-        .contact-b1 { top: 60px;  left: 22px; }
-        .contact-b2 { top: 150px; right: 22px; }
-        .contact-b3 { top: 240px; left: 28px; }
-        .contact-b4 { top: 330px; right: 22px; }
-        .contact-b5 { top: 420px; left: 28px; }
+        /* Nuevo Anuncio 2 (phone-wrapper) */
+        /* "Clasifica" heading ~16% | Chips categoría ~26% | Especialidad ~42% | Botón Publicar ~68% */
+        .na2-b1 { top: 155px; left: 8px; }
+        .na2-b2 { top: 206px; right: 8px; }
+        .na2-b3 { top: 288px; left: 8px; }
+        .na2-b4 { top: 370px; right: 8px; }
+
+        /* Mis Anuncios (phone-col) */
+        /* Header ~2% | Tabs ~7% | Card nombre ~14% | Badge "Activo" ~22% | Iconos editar/borrar ~24% */
+        .ad-b1 { top: 46px;  left: 8px; }
+        .ad-b2 { top: 73px;  right: 8px; }
+        .ad-b3 { top: 128px; left: 8px; }
+        .ad-b4 { top: 147px; right: 8px; }
+        .ad-b5 { top: 193px; left: 8px; }
+
+        /* Perfil (phone-col) */
+        /* Avatar ~7% | Mis Anuncios menú ~14% | Datos personales ~26% | Sobre Mirly ~44% | Cerrar sesión ~65% */
+        .prof-b1 { top: 66px;  left: 8px; }
+        .prof-b2 { top: 183px; right: 8px; }
+        .prof-b3 { top: 238px; left: 8px; }
+        .prof-b4 { top: 328px; right: 8px; }
+        .prof-b5 { top: 412px; left: 8px; }
+
+        /* Saldo (phone-col) */
+        /* Card saldo disponible ~8% | Botón Retirar ~22% | Botón Ingresar ~22% | Invita y gana ~50% | Transacciones ~60% */
+        .sal-b1 { top: 63px;  left: 8px; }
+        .sal-b2 { top: 160px; right: 8px; }
+        .sal-b3 { top: 198px; left: 8px; }
+        .sal-b4 { top: 338px; right: 8px; }
+        .sal-b5 { top: 390px; left: 8px; }
+
+        /* Sobre iMirly (phone-col) */
+        /* Header iMirly/versión ~11% | Misión ~33% | Valores heading ~44% | Lista valores ~52% | Stats ~73% */
+        .about-b1 { top: 93px;  left: 8px; }
+        .about-b2 { top: 174px; right: 8px; }
+        .about-b3 { top: 293px; left: 8px; }
+        .about-b4 { top: 338px; right: 8px; }
+        .about-b5 { top: 460px; left: 8px; }
+
+        /* Contacto (phone-col) */
+        /* Teléfono card ~32% | Form heading ~38% | Nombre field ~48% | Mensaje field ~69% | Enviar ~82% */
+        .contact-b1 { top: 285px; left: 8px; }
+        .contact-b2 { top: 315px; right: 8px; }
+        .contact-b3 { top: 446px; left: 8px; }
+        .contact-b4 { top: 508px; right: 8px; }
+        .contact-b5 { top: 220px; left: 8px; }
 
         /* Animaciones bubbles */
         @keyframes bubbleIn {
@@ -798,10 +870,12 @@
                 <i class="ph ph-sparkle"></i>
                 <span>Eslogan que define el propósito</span>
             </div>
+            <!--
             <div class="bubble bubble-left b3 bubble-version">
                 <i class="ph ph-device-mobile"></i>
                 <span>Versión 1.0.0 de la app</span>
             </div>
+            -->
             <div class="phone-frame">
                 <div class="phone-screen">
                     <img src="imagenes/01_Splash.png" alt="bienvenida">
@@ -828,6 +902,7 @@
         </div>
         <div class="phones-col">
             <div class="phone-wrapper">
+            <!--
             <div class="bubble bubble-left b1 ob1-b1">
                 <i class="ph ph-map-pin"></i>
                 <span>Encuentra profesionales cerca</span>
@@ -840,6 +915,12 @@
                 <i class="ph ph-arrow-right"></i>
                 <span>Avanza al siguiente paso</span>
             </div>
+            -->
+            <div class="bubble bubble-top b2 ob2-b2">
+                <i class="ph ph-x"></i>
+                <span>Omitir para saltar esta parte</span>
+            </div>
+
                 <div class="phone-frame">
                     <div class="phone-screen">
                         <img src="imagenes/02-iMirly1.png" alt="">
@@ -847,13 +928,14 @@
                 </div>
             </div>
             <div class="phone-wrapper">
-            <div class="bubble bubble-left b1 ob2-b1">
-                <i class="ph ph-handshake"></i>
-                <span>Contacto directo</span>
+            
+            <div class="bubble bubble-both b1 ob2-b1">
+                <i class="ph ph-arrow-right"></i>
+                <span>Siguiente para seguir viendo información sobre iMirly</span>
             </div>
-            <div class="bubble bubble-right b2 ob2-b2">
-                <i class="ph ph-chat-circle-text"></i>
-                <span>Chat integrado</span>
+            <div class="bubble bubble-top b2 ob2-b2">
+                <i class="ph ph-x"></i>
+                <span>Omitir para saltar esta parte</span>
             </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
@@ -882,22 +964,39 @@
         </div>
         <div class="phones-col">
             <div class="phone-wrapper">
-            <div class="bubble bubble-left b1 reg-b1">
+            <div class="bubble bubble-bottom b1 reg-b1">
                 <i class="ph ph-user-plus"></i>
-                <span>Crear cuenta nueva</span>
+                <span>¿Nuevo? Crear cuenta aquí</span>
             </div>
+            <!--
             <div class="bubble bubble-right b2 reg-b2">
                 <i class="ph ph-identification-card"></i>
                 <span>Nombre, email y contraseña</span>
             </div>
+            -->
+            
             <div class="bubble bubble-left b3 reg-b3">
-                <i class="ph ph-eye"></i>
-                <span>Mostrar u ocultar contraseña</span>
+                <i class="ph ph-user"></i>
+                <span>Nombre de usuario</span>
             </div>
+            <div class="bubble bubble-left b3 reg-b4">
+                <i class="ph ph-envelope-simple"></i>
+                <span>Email</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b5">
+                <i class="ph ph-lock"></i>
+                <span>Contraseña</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b6">
+                <i class="ph ph-check-circle"></i>
+                <span>Una vez todos los campos estén completados</span>
+            </div>
+            <!--
             <div class="bubble bubble-right b4 reg-b4">
                 <i class="ph ph-arrow-u-up-left"></i>
                 <span>¿Ya tienes cuenta? Ir al login</span>
             </div>
+        -->
                 <div class="phone-frame">
                     <div class="phone-screen">
                         <img src="imagenes/05-Registro.png" alt="">
@@ -905,6 +1004,24 @@
                 </div>
             </div>
             <div class="phone-wrapper">
+
+            <div class="bubble bubble-bottom b1 reg-b8">
+                <i class="ph ph-user-plus"></i>
+                <span>¿Ya tienes cuenta? Inicia sesión aquí</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b4">
+                <i class="ph ph-envelope-simple"></i>
+                <span>Email</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b5">
+                <i class="ph ph-lock"></i>
+                <span>Contraseña</span>
+            </div>
+            <div class="bubble bubble-left b3 reg-b7">
+                <i class="ph ph-check-circle"></i>
+                <span>Una vez rellenes los campos correctamente</span>
+            </div>
+            <!--
             <div class="bubble bubble-left b1 log-b1">
                 <i class="ph ph-envelope"></i>
                 <span>Inicia sesión con tu email</span>
@@ -917,6 +1034,7 @@
                 <i class="ph ph-user-circle-plus"></i>
                 <span>¿Nuevo? Crear cuenta aquí</span>
             </div>
+            -->
                 <div class="phone-frame">
                     <div class="phone-screen">
                         <img src="imagenes/06-Login.png" alt="">
