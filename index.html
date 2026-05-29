@@ -12,9 +12,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #6C5CE7;
-            --primary-light: #A29BFE;
-            --primary-dark: #5B4BC4;
+            --primary: #6c5ce7;
+            --primary-light: #e0e0ff;
+            --primary-dark: #321e92;
             --bg: #d1cff8;
             --white: #FFFFFF;
             --text: #2D3436;
@@ -534,17 +534,17 @@
 
         /* Home 1 (phone-wrapper) */
         /* Buscador ~10% | Banner ~25% | Stats ~38% | Categorías heading ~44% | NavBar ~90% */
-        .h1-b1 { top: 73px;  left: 8px; }
-        .h1-b2 { top: 198px; right: 8px; }
-        .h1-b3 { top: 148px; left: 8px; }
-        .h1-b4 { top: 258px; right: 8px; }
-        .h1-b5 { top: 478px; left: 8px; }
+        .h1-b1 { top: 73px;  left: 8px; max-width: 230px !important; }
+        .h1-b2 { top: 120px; right: -30px; max-width: 230px !important; }
+        .h1-b3 { top: 210px; right: -30px; max-width: 230px !important; }
+        .h1-b4 { top: 330px; right: -35px; max-width: 230px !important; }
+        .h1-b5 { top: 520px; right: -120px; min-width: 200px !important; }
 
         /* Home 2 (phone-wrapper) */
         /* Fila 1 (Estética/Hogar) ~11% | Fila 2 (Mascotas/Edu) ~33% | Fila 3 (Deporte/Cuidado) ~56% | NavBar ~91% */
-        .h2-b1 { top: 76px;  left: 8px; }
-        .h2-b2 { top: 190px; right: 8px; }
-        .h2-b3 { top: 308px; left: 8px; }
+        .h2-b1 { top: 75px; right: -40px; max-width: 175px !important; }
+        .h2-b2 { top: 230px; right: -50px; max-width: 230px !important; }
+        .h2-b3 { top: 364px; right: -40px; max-width: 230px !important; }
         .h2-b4 { top: 486px; right: 8px; }
 
         /* Favoritos (phone-col 300px, pantalla ~590px, inicio y=52) */
@@ -1062,15 +1062,17 @@
         </div>
         <div class="phones-col">
             <div class="phone-wrapper">
+                <!--
             <div class="bubble bubble-left b1 h1-b1">
                 <i class="ph ph-magnifying-glass"></i>
                 <span>Buscador de servicios</span>
             </div>
+            -->
             <div class="bubble bubble-right b2 h1-b2">
-                <i class="ph ph-chart-bar"></i>
-                <span>Stats de profesionales</span>
+                <i class="ph ph-magnifying-glass"></i>
+                <span>Buscador de servicios</span>
             </div>
-            <div class="bubble bubble-left b3 h1-b3">
+            <div class="bubble bubble-right b3 h1-b3">
                 <i class="ph ph-sparkle"></i>
                 <span>Banner promocional</span>
             </div>
@@ -1078,7 +1080,7 @@
                 <i class="ph ph-tag"></i>
                 <span>Categorías populares</span>
             </div>
-            <div class="bubble bubble-left b5 h1-b5">
+            <div class="bubble bubble-both b5 h1-b5">
                 <i class="ph ph-squares-four"></i>
                 <span>Navegación inferior</span>
             </div>
@@ -1089,22 +1091,24 @@
                 </div>
             </div>
             <div class="phone-wrapper">
-            <div class="bubble bubble-left b1 h2-b1">
+            <div class="bubble bubble-right b1 h2-b1">
                 <i class="ph ph-paint-brush"></i>
-                <span>Ilustraciones por categoría</span>
+                <span>Ilustraciones sencillas para cada categoría</span>
             </div>
             <div class="bubble bubble-right b2 h2-b2">
                 <i class="ph ph-list"></i>
                 <span>Mascotas, Educación, etc.</span>
             </div>
-            <div class="bubble bubble-left b3 h2-b3">
+            <div class="bubble bubble-right b3 h2-b3">
                 <i class="ph ph-users"></i>
                 <span>Contador de profesionales</span>
             </div>
+            <!--
             <div class="bubble bubble-right b4 h2-b4">
                 <i class="ph ph-plus-circle"></i>
                 <span>Botón Publicar</span>
             </div>
+            -->
                 <div class="phone-frame">
                     <div class="phone-screen">
                         <img src="imagenes/07-Home1.png" alt="">
