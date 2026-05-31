@@ -549,11 +549,11 @@
 
         /* Favoritos (phone-col 300px, pantalla ~590px, inicio y=52) */
         /* Heading ~3% | Card nombre ~12% | Rating ~16% | Precio/Corazón ~16% | NavBar ~90% */
-        .fav-b1 { top: 38px;  left: 8px; }
-        .fav-b2 { top: 110px; right: 8px; }
-        .fav-b3 { top: 103px; left: 8px; }
-        .fav-b4 { top: 160px; right: 8px; }
-        .fav-b5 { top: 555px; left: 8px; }
+        .fav-b1 { top: 35px; right: 210px; max-width: 230px !important; }
+        .fav-b5 { top: 157px; right: 395px; max-width: 230px !important; }
+        .fav-b3 { top: 605px; left: 8px; }
+        .fav-b4 { top: 185px; right: 20px; max-width: 230px !important; }
+        .fav-b2 { top: 220px; right: 260px; max-width: 150px !important; }
 
         /* Nuevo Anuncio 1 (phone-wrapper) */
         /* Paso/barra ~8% | Upload imagen ~23% | Título ~35% | Precio ~44% | Descripción ~67% */
@@ -1135,18 +1135,21 @@
         </div>
         </div>
         <div class="phone-col">
-            <div class="bubble bubble-left b1 fav-b1">
+            <div class="bubble bubble-bottom b1 fav-b1">
                 <i class="ph ph-heart"></i>
                 <span>Lista de favoritos guardados</span>
             </div>
-            <div class="bubble bubble-right b2 fav-b2">
+            
+            <div class="bubble bubble-top b2 fav-b2">
                 <i class="ph ph-star"></i>
                 <span>Valoraciones de profesionales</span>
             </div>
+            <!--
             <div class="bubble bubble-left b3 fav-b3">
                 <i class="ph ph-bell"></i>
                 <span>Notificaciones activas</span>
             </div>
+            -->
             <div class="bubble bubble-right b4 fav-b4">
                 <i class="ph ph-trash"></i>
                 <span>Eliminar de favoritos</span>
@@ -1154,6 +1157,10 @@
             <div class="bubble bubble-left b5 fav-b5">
                 <i class="ph ph-arrow-right"></i>
                 <span>Ver perfil del profesional</span>
+            </div>
+            <div class="bubble bubble-left b5 fav-b3">
+                <i class="ph ph-squares-four"></i>
+                <span>Navegación inferior</span>
             </div>
             <div class="phone-frame">
                 <div class="phone-screen">
