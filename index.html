@@ -612,11 +612,12 @@
 
         /* Contacto (phone-col) */
         /* Teléfono card ~32% | Form heading ~38% | Nombre field ~48% | Mensaje field ~69% | Enviar ~82% */
-        .contact-b1 { top: 285px; left: 8px; }
-        .contact-b2 { top: 315px; right: 8px; }
-        .contact-b3 { top: 446px; left: 8px; }
-        .contact-b4 { top: 508px; right: 8px; }
-        .contact-b5 { top: 220px; left: 8px; }
+        .contact-b1 { top: 170px; left: 5px; max-width: 200px !important; }
+        .contact-b2 { top: 227px; left: 33px; max-width: 200px !important; }
+        .contact-b3 { top: 290px; left: -15px; max-width: 200px !important; }
+        .contact-b4 { top: 465px; right: 45px; max-width: 150px !important; }
+        .contact-b5 { top: 527px; right: 57px; max-width: 150px !important; }
+        .contact-b6 { top: 582px; right: 8px; max-width: 150px !important; }
 
         /* Animaciones bubbles */
         @keyframes bubbleIn {
@@ -1492,24 +1493,34 @@
         <div class="phone-col">
             <div class="bubble bubble-left b1 contact-b1">
                 <i class="ph ph-envelope"></i>
-                <span>Formulario de contacto</span>
+                <span>Email de contacto</span>
             </div>
-            <div class="bubble bubble-right b2 contact-b2">
-                <i class="ph ph-user"></i>
-                <span>Tu nombre</span>
+            <div class="bubble bubble-left b5 contact-b2">
+                <i class="ph ph-chat"></i>
+                <span>Chat en vivo</span>
             </div>
-            <div class="bubble bubble-left b3 contact-b3">
-                <i class="ph ph-text-t"></i>
-                <span>Mensaje o consulta</span>
-            </div>
-            <div class="bubble bubble-right b4 contact-b4">
-                <i class="ph ph-paper-plane-right"></i>
-                <span>Enviar mensaje</span>
-            </div>
-            <div class="bubble bubble-left b5 contact-b5">
+            <div class="bubble bubble-left b5 contact-b3">
                 <i class="ph ph-phone"></i>
                 <span>Teléfono de contacto</span>
             </div>
+            <div class="bubble bubble-right b2 contact-b4">
+                <i class="ph ph-user"></i>
+                <span>Tu nombre</span>
+            </div>
+            <div class="bubble bubble-right b3 contact-b6">
+                <i class="ph ph-text-t"></i>
+                <span>Mensaje o consulta</span>
+            </div>
+            <div class="bubble bubble-right b3 contact-b5">
+                <i class="ph ph-envelope"></i>
+                <span>Tu email</span>
+            </div>
+            <!--
+            <div class="bubble bubble-right b4 contact-b7">
+                <i class="ph ph-paper-plane-right"></i>
+                <span>Enviar mensaje</span>
+            </div>
+            -->
             <div class="phone-frame">
                 <div class="phone-screen">
                     <img src="imagenes/14.ContactaNosotros.png" alt="contacto">
