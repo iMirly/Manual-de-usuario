@@ -583,11 +583,16 @@
 
         /* Perfil (phone-col) */
         /* Avatar ~7% | Mis Anuncios menú ~14% | Datos personales ~26% | Sobre Mirly ~44% | Cerrar sesión ~65% */
-        .prof-b1 { top: 66px;  left: 8px; }
-        .prof-b2 { top: 183px; right: 8px; }
-        .prof-b3 { top: 238px; left: 8px; }
-        .prof-b4 { top: 328px; right: 8px; }
-        .prof-b5 { top: 412px; left: 8px; }
+        .prof-b1 { top: 100px; left: 40px; max-width: 150px !important; }
+        .prof-b2 { top: 160px; left: -15px; max-width: 200px !important; }
+        .prof-b3 { top: 240px; left: -5px; max-width: 200px !important; }
+        .prof-b4 { top: 310px; left: -30px; max-width: 200px !important; }
+        .prof-b5 { top: 390px; left: 10px; max-width: 200px !important; }
+        .prof-b6 { top: 205px; right: 40px; max-width: 150px !important; }
+        .prof-b7 { top: 275px; right: -8px; max-width: 200px !important; }
+        .prof-b8 { top: 347px; right: 25px; max-width: 150px !important; }
+        .prof-b9 { top: 420px; right: 25px; max-width: 150px !important; }
+        .prof-b10 { top: 485px; left: 40px; max-width: 200px !important; }
 
         /* Saldo (phone-col) */
         /* Card saldo disponible ~8% | Botón Retirar ~22% | Botón Ingresar ~22% | Invita y gana ~50% | Transacciones ~60% */
@@ -826,8 +831,8 @@
                 <li><a href="#principal"><i class="ph ph-house"></i> Principal</a></li>
                 <li><a href="#favoritos"><i class="ph ph-heart"></i> Favoritos</a></li>
                 <li><a href="#anuncio"><i class="ph ph-plus-circle"></i> Anuncio</a></li>
-                <li><a href="#mis-anuncios"><i class="ph ph-list-dashes"></i> Mis Anuncios</a></li>
                 <li><a href="#perfil"><i class="ph ph-user-circle"></i> Perfil</a></li>
+                <li><a href="#mis-anuncios"><i class="ph ph-list-dashes"></i> Mis Anuncios</a></li>
                 <li><a href="#saldo"><i class="ph ph-currency-eur"></i> Saldo</a></li>
                 <li><a href="#sobre"><i class="ph ph-info"></i> Sobre</a></li>
                 <li><a href="#contacto"><i class="ph ph-envelope"></i> Contacto</a></li>
@@ -1065,7 +1070,7 @@
         </div>
         <div class="phones-col">
             <div class="phone-wrapper">
-                <!--
+            <!--
             <div class="bubble bubble-left b1 h1-b1">
                 <i class="ph ph-magnifying-glass"></i>
                 <span>Buscador de servicios</span>
@@ -1261,10 +1266,75 @@
         </div>
     </section>
 
+    <!-- ========== PERFIL ========== -->
+    <section class="section section-divider" id="perfil">
+        <div class="text-col"; style="flex: 0 0 600px;">
+            <div class="step-badge"><i class="ph ph-user-circle"></i> Paso 7</div>
+            <h2>Mi <span>Perfil</span></h2>
+            <p>Gestiona tu información personal en iMirly. Edita tus datos, cambia tu foto de perfil, revisa tu saldo y configura tus preferencias de contacto. Todo desde un menú organizado y accesible.</p>
+            <ul class="feature-list">
+                <li><i class="ph ph-user-circle"></i> Foto de perfil y nombre personalizable</li>
+                <li><i class="ph ph-gear"></i> Configuración de cuenta y preferencias</li>
+                <li><i class="ph ph-sign-out"></i> Cerrar sesión de forma segura</li>
+            </ul>
+<div class="extra-text">
+            <p>El perfil muestra tu avatar con las iniciales, tu nombre de usuario y la valoración global que has recibido. Desde aquí accedes a todas las opciones de gestión de tu cuenta.</p>
+            <p>El menú incluye accesos directos a Mis Anuncios, Saldo, Datos Personales, Cambiar Contraseña, Chat de Mirly, Sobre Mirly, Ayuda y Contacto. El botón de cerrar sesión está destacado en rojo.</p>
+        </div>
+        </div>
+        <div class="phone-col">
+            <div class="bubble bubble-left b1 prof-b1">
+                <i class="ph ph-user-circle"></i>
+                <span>Foto de perfil</span>
+            </div>
+            <div class="bubble bubble-left b1 prof-b2">
+                <i class="ph ph-list-dashes"></i>
+                <span>Tu tablero de anuncios</span>
+            </div>
+            <div class="bubble bubble-left b2 prof-b3">
+                <i class="ph ph-identification-badge"></i>
+                <span>Información personal</span>
+            </div>
+            <div class="bubble bubble-left b2 prof-b4">
+                <i class="ph ph-chat"></i>
+                <span>Asistencia para preguntas frecuentes</span>
+            </div>
+            <div class="bubble bubble-left b2 prof-b5">
+                <i class="ph ph-question"></i>
+                <span>Apartado de ayuda</span>
+            </div>
+            <div class="bubble bubble-right b3 prof-b6">
+                <i class="ph ph-wallet"></i>
+                <span>Cartera virtual</span>
+            </div>
+            <div class="bubble bubble-right b4 prof-b7">
+                <i class="ph ph-key"></i>
+                <span>Cambio de contraseña</span>
+            </div>
+            <div class="bubble bubble-right b4 prof-b8">
+                <i class="ph ph-info"></i>
+                <span>Información sobre iMirly</span>
+            </div>
+            <div class="bubble bubble-right b4 prof-b9">
+                <i class="ph ph-envelope"></i>
+                <span>Contacta con iMirly</span>
+            </div>
+            <div class="bubble bubble-left b5 prof-b10">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="imagenes/11-Perfil.png" alt="perfil">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== MIS-ANUNCIOS ========== -->
     <section class="section section-divider" id="mis-anuncios">
         <div class="text-col"; style="flex: 0 0 600px;">
-            <div class="step-badge"><i class="ph ph-list-dashes"></i> Paso 7</div>
+            <div class="step-badge"><i class="ph ph-list-dashes"></i> Paso 8</div>
             <h2>Mis <span>Anuncios</span></h2>
             <p>Gestiona todos los anuncios que has publicado en iMirly desde un panel de control centralizado. Edita, activa, pausa o elimina tus servicios según tus necesidades en cualquier momento.</p>
             <ul class="feature-list">
@@ -1301,51 +1371,6 @@
             <div class="phone-frame">
                 <div class="phone-screen">
                     <img src="imagenes/11-MisAnuncios.png" alt="mis-anuncios">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PERFIL ========== -->
-    <section class="section section-divider" id="perfil">
-        <div class="text-col"; style="flex: 0 0 600px;">
-            <div class="step-badge"><i class="ph ph-user-circle"></i> Paso 8</div>
-            <h2>Mi <span>Perfil</span></h2>
-            <p>Gestiona tu información personal en iMirly. Edita tus datos, cambia tu foto de perfil, revisa tu saldo y configura tus preferencias de contacto. Todo desde un menú organizado y accesible.</p>
-            <ul class="feature-list">
-                <li><i class="ph ph-user-circle"></i> Foto de perfil y nombre personalizable</li>
-                <li><i class="ph ph-gear"></i> Configuración de cuenta y preferencias</li>
-                <li><i class="ph ph-sign-out"></i> Cerrar sesión de forma segura</li>
-            </ul>
-<div class="extra-text">
-            <p>El perfil muestra tu avatar con las iniciales, tu nombre de usuario y la valoración global que has recibido. Desde aquí accedes a todas las opciones de gestión de tu cuenta.</p>
-            <p>El menú incluye accesos directos a Mis Anuncios, Saldo, Datos Personales, Cambiar Contraseña, Chat de Mirly, Sobre Mirly, Ayuda y Contacto. El botón de cerrar sesión está destacado en rojo.</p>
-        </div>
-        </div>
-        <div class="phone-col">
-            <div class="bubble bubble-left b1 prof-b1">
-                <i class="ph ph-user-circle"></i>
-                <span>Foto de perfil</span>
-            </div>
-            <div class="bubble bubble-right b2 prof-b2">
-                <i class="ph ph-identification-badge"></i>
-                <span>Información personal</span>
-            </div>
-            <div class="bubble bubble-left b3 prof-b3">
-                <i class="ph ph-envelope"></i>
-                <span>Email de contacto</span>
-            </div>
-            <div class="bubble bubble-right b4 prof-b4">
-                <i class="ph ph-gear"></i>
-                <span>Configuración</span>
-            </div>
-            <div class="bubble bubble-left b5 prof-b5">
-                <i class="ph ph-sign-out"></i>
-                <span>Cerrar sesión</span>
-            </div>
-            <div class="phone-frame">
-                <div class="phone-screen">
-                    <img src="imagenes/11-Perfil.png" alt="perfil">
                 </div>
             </div>
         </div>
