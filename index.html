@@ -557,18 +557,21 @@
 
         /* Nuevo Anuncio 1 (phone-wrapper) */
         /* Paso/barra ~8% | Upload imagen ~23% | Título ~35% | Precio ~44% | Descripción ~67% */
-        .na1-b1 { top: 193px; left: 8px; }
+        .na1-b1 { top: 260px; right: -20px; max-width: 150px !important; }
         .na1-b2 { top: 55px;  right: 8px; }
-        .na1-b3 { top: 368px; left: 8px; }
-        .na1-b4 { top: 137px; right: 8px; }
-        .na1-b5 { top: 255px; left: 8px; }
+        .na1-b3 { top: 420px; right: -30px; max-width: 150px !important; }
+        .na1-b4 { top: 170px; right: 8px; max-width: 150px !important; }
+        .na1-b5 { top: 310px; right: -25px; max-width: 150px !important; }
+        .na1-b6 { top: 355px; right: -30px; max-width: 150px !important; }
 
         /* Nuevo Anuncio 2 (phone-wrapper) */
         /* "Clasifica" heading ~16% | Chips categoría ~26% | Especialidad ~42% | Botón Publicar ~68% */
         .na2-b1 { top: 155px; left: 8px; }
         .na2-b2 { top: 206px; right: 8px; }
         .na2-b3 { top: 288px; left: 8px; }
-        .na2-b4 { top: 370px; right: 8px; }
+        .na2-b4 { top: 320px; right: -25px; max-width: 150px !important; }
+        .na2-b5 { top: 195px; right: -35px; max-width: 150px !important; }
+        .na2-b6 { top: 255px; right: -35px; max-width: 150px !important; }
 
         /* Mis Anuncios (phone-col) */
         /* Header ~2% | Tabs ~7% | Card nombre ~14% | Badge "Activo" ~22% | Iconos editar/borrar ~24% */
@@ -1188,15 +1191,17 @@
         </div>
         <div class="phones-col">
             <div class="phone-wrapper">
-            <div class="bubble bubble-left b1 na1-b1">
+            <div class="bubble bubble-right b1 na1-b1">
                 <i class="ph ph-pencil-simple"></i>
                 <span>Título del anuncio</span>
             </div>
+            <!--
             <div class="bubble bubble-right b2 na1-b2">
                 <i class="ph ph-list"></i>
                 <span>Selecciona categoría</span>
             </div>
-            <div class="bubble bubble-left b3 na1-b3">
+            -->
+            <div class="bubble bubble-right b3 na1-b3">
                 <i class="ph ph-text-t"></i>
                 <span>Descripción del servicio</span>
             </div>
@@ -1204,9 +1209,13 @@
                 <i class="ph ph-image"></i>
                 <span>Subir fotos</span>
             </div>
-            <div class="bubble bubble-left b5 na1-b5">
+            <div class="bubble bubble-right b5 na1-b5">
                 <i class="ph ph-currency-eur"></i>
                 <span>Precio del servicio</span>
+            </div>
+            <div class="bubble bubble-right b2 na1-b6">
+                <i class="ph ph-map-pin"></i>
+                <span>Ubicación del servicio</span>
             </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
@@ -1215,17 +1224,29 @@
                 </div>
             </div>
             <div class="phone-wrapper">
+            <!--
             <div class="bubble bubble-left b1 na2-b1">
                 <i class="ph ph-map-pin"></i>
                 <span>Ubicación del servicio</span>
             </div>
+            
             <div class="bubble bubble-right b2 na2-b2">
                 <i class="ph ph-phone"></i>
                 <span>Teléfono de contacto</span>
             </div>
+            
             <div class="bubble bubble-left b3 na2-b3">
                 <i class="ph ph-check-circle"></i>
                 <span>Revisar y confirmar</span>
+            </div>
+            -->
+            <div class="bubble bubble-right b2 na2-b5">
+                <i class="ph ph-list-dashes"></i>
+                <span>Selecciona categoría</span>
+            </div>
+            <div class="bubble bubble-right b2 na2-b6">
+                <i class="ph ph-list"></i>
+                <span>Selecciona especialidad</span>
             </div>
             <div class="bubble bubble-right b4 na2-b4">
                 <i class="ph ph-paper-plane-right"></i>
