@@ -5,7 +5,7 @@
 <br>
 
 <div align="center">
-  <a href="https://appimirly.github.io/Manual-de-usuario/index.html" target="_blank">
+  <a href="https://imirly.github.io/Manual-de-usuario/" target="_blank">
     <img src="https://img.shields.io/badge/Ver_Documentación-6c5ce7?style=for-the-badge&logo=google-chrome&logoColor=white"/>
   </a>
   <a href="https://github.com/iMirly/iMirly" target="_blank">
