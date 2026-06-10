@@ -5,6 +5,17 @@
 <br>
 
 <div align="center">
+  <a href="https://appimirly.github.io/Manual-de-usuario/index.html" target="_blank">
+    <img src="https://img.shields.io/badge/Ver_Documentación-6c5ce7?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+  </a>
+  <a href="https://github.com/iMirly/iMirly" target="_blank">
+    <img src="https://img.shields.io/badge/Repositorio_Principal-3f51b5?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</div>
+
+<br>
+
+<div align="center">
   <a href="https://github.com/iMirly/Manual-de-usuario.git">
     <img src="https://img.shields.io/badge/REPO-GITHUB-6c5ce7?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
@@ -92,20 +103,23 @@ Al ser una página web estática, no requiere de compilación ni servidores comp
 <p align="center"><b>Trabajo Fin de Ciclo DAM — New Digital Talent, Granada · 2025</b></p>
 
 <p align="center">
-  <a href="https://github.com/evagr11">
-    <img src="https://img.shields.io/badge/Eva_Gallardo-3f51b5?style=for-the-badge&logo=github&logoColor=white"/>
-  </a>
-</p>
-<p align="center">
   <a href="https://github.com/AnaNunezRejon">
     <img src="https://img.shields.io/badge/Ana_Núñez-6c5ce7?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
 </p>
+
 <p align="center">
   <a href="https://github.com/Anyeel">
     <img src="https://img.shields.io/badge/Ángel_Millán-3f51b5?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
 </p>
+
+<p align="center">
+  <a href="https://github.com/evagr11">
+    <img src="https://img.shields.io/badge/Eva_Gallardo-3f51b5?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</p>
+
 <p align="center">
   <a href="https://github.com/nicocorbi">
     <img src="https://img.shields.io/badge/Nicolás_Corbi-6c5ce7?style=for-the-badge&logo=github&logoColor=white"/>
@@ -131,5 +145,5 @@ Al ser una página web estática, no requiere de compilación ni servidores comp
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3f51b5,100:6c5ce7&height=80&section=footer" width="100%"/>
-  <sub>© 2025 iMirly — Proyecto académico DAM · Granada, España</sub>
+  <sub>© 2026 iMirly — Proyecto académico DAM · Granada, España</sub>
 </div>
